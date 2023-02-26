@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HttpController {
 
-    @RequestMapping(value = "/alma", method = RequestMethod.GET)
-    public String index() {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String HelloUser() {
         return "index";
     }
 }

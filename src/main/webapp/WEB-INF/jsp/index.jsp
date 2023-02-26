@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Quiz - Login</title>
     <mvc:resources mapping="/resources/**" location="/resources/static/" />
-    <link href="/style/style.css" rel="stylesheet"/>
+    <link href="/app.css" rel="stylesheet"/>
+    <script src="/app.js"></script>
 </head>
 <body>
     <main>
