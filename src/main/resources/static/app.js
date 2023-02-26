@@ -7,8 +7,9 @@ console.log('stomp', stompClient)
 stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/topic/greetings', function (mess) {
-        const obj = JSON.parse(mess)
-        console.log("obj", obj.data)
+        console.log('mess', mess)
+        console.log("obj", mess.body)
+        console.log("obj", JSON.parse(mess.body))
     });
 });
 

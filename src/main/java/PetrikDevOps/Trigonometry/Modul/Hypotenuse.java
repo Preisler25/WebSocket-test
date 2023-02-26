@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Click {
-    private String click;
+public class Hypotenuse {
+    private float length;
+    private float angle;
+    private int x;
+    private int y;
 }

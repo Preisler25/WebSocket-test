@@ -1,6 +1,7 @@
 package PetrikDevOps.Trigonometry.Controller;
 
-import PetrikDevOps.Trigonometry.Modul.Click;
+import PetrikDevOps.Trigonometry.Modul.HypotenRec;
+import PetrikDevOps.Trigonometry.Modul.Hypotenuse;
 import PetrikDevOps.Trigonometry.Modul.Data;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -16,20 +17,22 @@ public class SockerController {
 
     @MessageMapping("/click")
     @SendTo("/topic/greetings")
-    public Click click(Data data) throws InterruptedException {
-        System.out.println(data_list);
+    public Hypotenuse click(Data data) throws InterruptedException {
+
         if (data_list.size() == 1) {
             data_list.add(data);
             System.out.println(data_list);
-            calculate(data_list);
-            data_list.clear();
-            return new Click("Hello, " + HtmlUtils.htmlEscape(data.getX() + " " + data.getY()) + "!");
+            HypotenRec rec = calculate(data_list);
+            return new Hypotenuse(rec.getLength(), rec.getAngle(), data_list.get(0).getX(), data_list.get(0).getY());
         }
-        data_list.add(data);
-        return new Click("Hello, " + HtmlUtils.htmlEscape(data.getX() + " " + data.getY()) + "!");
+        else{
+            data_list.clear();
+            data_list.add(data);
+            return new Hypotenuse();
+        }
     }
 
-    public int calculate(List<Data> data_list) {
+    public HypotenRec calculate(List<Data> data_list) {
         int x1 = data_list.get(0).getX();
         int y1 = data_list.get(0).getY();
 
@@ -39,11 +42,13 @@ public class SockerController {
         int x = x1 - x2;
         int y = y1 - y2;
 
+        System.out.println(x + " " + y);
+
         float distance = (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-        float angle = (float) Math.atan2(y, x);
+        float angle = (float) Math.toDegrees(Math.atan2(y, x));
 
         System.out.println("Distance: " + distance);
         System.out.println("Angle: " + angle);
-        return 0;
+        return new HypotenRec(distance, angle);
     }
 }
