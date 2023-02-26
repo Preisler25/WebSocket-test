@@ -7,9 +7,17 @@ console.log('stomp', stompClient)
 stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/topic/greetings', function (mess) {
-        console.log('mess', mess)
-        console.log("obj", mess.body)
-        console.log("obj", JSON.parse(mess.body))
+        let obj = JSON.parse(mess.body)
+        let line = document.createElement('div')
+        line.style.backgroundColor = 'red'
+        line.style.position = 'fixed'
+        line.style.top = obj.y + 'px'
+        line.style.left = obj.x + 'px'
+        line.style.border = '1px solid black'
+        line.style.width = obj.length + 'px'
+        line.style.height = '10px'
+        line.style.rotate = obj.angle + 'deg'
+        document.body.appendChild(line)
     });
 });
 
