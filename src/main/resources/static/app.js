@@ -6,8 +6,9 @@ console.log('socker', socket)
 console.log('stomp', stompClient)
 stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/greetings', function (greeting) {
-        console.log('greatings', greeting)
+    stompClient.subscribe('/topic/greetings', function (mess) {
+        const obj = JSON.parse("alma", mess)
+        log(obj.data)
     });
 });
 
