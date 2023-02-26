@@ -1,13 +1,12 @@
 package PetrikDevOps.Trigonometry.Modul;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@lombok.Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
-    private String name;
+public class Data {
+    private int x;
+    private int y;
 }
