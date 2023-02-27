@@ -6,12 +6,12 @@ import PetrikDevOps.Trigonometry.Modul.Data;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
+
 
 import java.util.List;
 
 @Controller
-public class SockerController {
+public class SocketController {
 
     List<Data> data_list = new java.util.ArrayList<>();
 
