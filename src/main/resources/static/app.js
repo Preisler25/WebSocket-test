@@ -6,7 +6,7 @@ console.log('socker', socket)
 console.log('stomp', stompClient)
 stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/greetings', function (mess) {
+    stompClient.subscribe('/ws/trieng', function (mess) {
         let obj = JSON.parse(mess.body)
         let line = document.createElement('div')
         line.style.backgroundColor = 'red'

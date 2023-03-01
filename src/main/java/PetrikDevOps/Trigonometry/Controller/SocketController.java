@@ -16,14 +16,14 @@ public class SocketController {
     List<Data> data_list = new java.util.ArrayList<>();
 
     @MessageMapping("/click")
-    @SendTo("/topic/greetings")
+    @SendTo("/ws/trieng")
     public Hypotenuse click(Data data) throws InterruptedException {
 
         if (data_list.size() == 1) {
             data_list.add(data);
             System.out.println(data_list);
             HypotenRec rec = calculate(data_list);
-            return new Hypotenuse(rec.getLength(), rec.getAngle(), data_list.get(0).getX(), data_list.get(0).getY());
+            return new Hypotenuse(rec.getLength(), rec.getAngle(), data_list.get(0).getX(), data_list.get(0).getY()- ((data_list.get(0).getY() - data_list.get(1).getY())/2));
         }
         else{
             data_list.clear();
@@ -49,6 +49,7 @@ public class SocketController {
 
         System.out.println("Distance: " + distance);
         System.out.println("Angle: " + angle);
+
         return new HypotenRec(distance, angle);
     }
 }
