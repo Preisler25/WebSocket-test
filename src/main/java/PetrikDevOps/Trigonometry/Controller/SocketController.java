@@ -23,7 +23,7 @@ public class SocketController {
             data_list.add(data);
             System.out.println(data_list);
             HypotenRec rec = calculate(data_list);
-            return new Hypotenuse(rec.getLength(), rec.getAngle(), data_list.get(0).getX(), data_list.get(0).getY()- ((data_list.get(0).getY() - data_list.get(1).getY())/2));
+            return new Hypotenuse(rec.getLength(), rec.getAngle(), data_list.get(0).getX(), data_list.get(0).getY()- ((data_list.get(0).getY() - data_list.get(1).getY())/2) -100 );
         }
         else{
             data_list.clear();

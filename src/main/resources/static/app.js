@@ -8,6 +8,7 @@ stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
     stompClient.subscribe('/ws/trieng', function (mess) {
         let obj = JSON.parse(mess.body)
+        console.log(obj)
         let line = document.createElement('div')
         line.style.backgroundColor = 'red'
         line.style.position = 'fixed'
